@@ -1,11 +1,12 @@
-const key = document.getElementById('qwerty');
-const phr =  document.getElementById('phrase');
-const rest = document.getElementsByClassName("btn_reset");
+const key = document.querySelector('#qwerty');
+const phr =  document.querySelector('#phrase');
+const rest = document.querySelector('.btn__reset');
 let missed = 0;
-const phrases = ['apex', 'enginebrake', 'gird', 'paddock', 'parabolica'];
+let phrases = ['apex', 'enginebrake', 'gird', 'paddock', 'parabolica'];
 
- rest.addEventListener('click', e => {
-console.log("hello");
+ rest.addEventListener('click', () => {
 
+    document.querySelector('#overlay').style.display = "none"
+console.log('what');
 });
 
