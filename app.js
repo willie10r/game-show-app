@@ -3,14 +3,21 @@ const phr =  document.querySelector('#phrase');
 const rest = document.querySelector('.btn__reset');
 let missed = 0;
 let phrases = ['apex', 'enginebrake', 'gird', 'paddock', 'parabolica'];
-let ranNum = phrases[]
+let ranNum = Math.floor(Math.random()*5);
 
 rest.addEventListener('click', () => {
   document.querySelector('#overlay').style.display = "none"
-  console.log('what');
+  console.log(phrases[ranNum]);
 });
 
-function stub() {
+function getRandomPhraseAsArray() {
+  let dis = phrases[ranNum];
+
+return dis;
+
+}
+
+function addPhraseToDisplay() {
 
 
 }
