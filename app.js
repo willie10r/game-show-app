@@ -26,20 +26,21 @@ function addPhraseToDisplay(dis) {
     li.innerHTML = dis[i];
     ul.appendChild(li);
     li.classList.add('space');
-    console.log('space');
-    console.log(dis[i]);
+ 
   } else {
     ul = document.getElementById("phrase");
     li = document.createElement('li');
     li.innerHTML = dis[i];
     ul.appendChild(li);
     li.classList.add('letter');
-    console.log('letter');
-    console.log(dis[i]);
+  
   };
  
  };
 };
+getRandomPhraseAsArray();
+addPhraseToDisplay(dis);
+
 
 function checkLetter(clicked) {
 
@@ -47,17 +48,36 @@ function checkLetter(clicked) {
   for(let i = 0; i < dis.length; i++) {
     let li_var = li;
     if(li_var = clicked) {
+      li.classList.add('show');
+      match = clicked;
       console.log('worked');
       console.log(li_var);
-      console.log(dis[i]);
+      console.log(match);
       
     } else {
-      console.log('nope');
+      console.log('nope1');
     };
+    return match;
 };
 
 };
 
-getRandomPhraseAsArray();
-addPhraseToDisplay(dis);
-checkLetter();
+qwerty.addEventListener('click', (e) => {
+  
+  if(e.target.tagName === 'BUTTON' && e.target.className != 'chosen') {
+    e.target.classList.add('chosen');
+    if(checkLetter() == true) {
+
+    
+      checkLetter();
+      console.log('yes')
+    };
+  } else {
+
+    console.log('nope')
+
+  };
+ 
+}); 
+
+
