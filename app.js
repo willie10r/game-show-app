@@ -45,9 +45,10 @@ addPhraseToDisplay(dis);
 function checkLetter(clicked) {
 
   let match = null; 
-  for(let i = 0; i < dis.length; i++) {
+  let letter = document.querySelectorAll('.letter');
+  for(let i = 0; i < letter.length; i++) {
     let li_var = li;
-    if(li_var = clicked) {
+    if(li_var === clicked) {
       li.classList.add('show');
       match = clicked;
       console.log('worked');
@@ -57,20 +58,19 @@ function checkLetter(clicked) {
     } else {
       console.log('nope1');
     };
-    return match;
-};
-
+  };
+  return match;
 };
 
 qwerty.addEventListener('click', (e) => {
   
   if(e.target.tagName === 'BUTTON' && e.target.className != 'chosen') {
-    e.target.classList.add('chosen');
-    if(checkLetter() == true) {
+   e.target.classList.add('chosen');
+    if(1 == true) {
 
     
       checkLetter();
-      console.log('yes')
+      console.log()
     };
   } else {
 
