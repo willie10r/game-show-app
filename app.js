@@ -8,6 +8,7 @@ let dis = '';
 let ul = '';
 let li = '';
 
+
 rest.addEventListener('click', (e) => {
   document.querySelector('#overlay').style.display = "none"
   
@@ -43,20 +44,22 @@ addPhraseToDisplay(dis);
 
 
 function checkLetter(clicked) {
-
   let match = null; 
   let letter = document.querySelectorAll('.letter');
+  let li = document.querySelectorAll('li');
   for(let i = 0; i < letter.length; i++) {
-    let li_var = li;
-    if(li_var === clicked) {
-      li.classList.add('show');
+ 
+    
+    if(dis[i] == clicked) {
+      li[i].classList.add('show');
       match = clicked;
       console.log('worked');
-      console.log(li_var);
-      console.log(match);
+      console.log(dis[i]);
+      console.log(clicked);
+      
       
     } else {
-      console.log('nope1');
+     console.log('no');
     };
   };
   return match;
@@ -66,10 +69,11 @@ qwerty.addEventListener('click', (e) => {
   
   if(e.target.tagName === 'BUTTON' && e.target.className != 'chosen') {
    e.target.classList.add('chosen');
+   let clicked = e.target;
     if(1 == true) {
 
     
-      checkLetter();
+      checkLetter(clicked.textContent);
       console.log()
     };
   } else {
