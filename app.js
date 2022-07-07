@@ -4,6 +4,7 @@ const rest = document.querySelector('.btn__reset');
 const phrases = ['pit stop', 'enginebrake', 'starting gird', 'paddock', 'parabolica'];
 const ranNum = Math.floor(Math.random()*5);
 let missed = 0;
+let match = null; 
 let dis = '';
 let ul = '';
 let li = '';
@@ -44,7 +45,7 @@ addPhraseToDisplay(dis);
 
 
 function checkLetter(clicked) {
-  let match = null; 
+  
   let letter = document.querySelectorAll('.letter');
   let li = document.querySelectorAll('li');
   for(let i = 0; i < letter.length; i++) {
@@ -53,11 +54,6 @@ function checkLetter(clicked) {
     if(dis[i] == clicked) {
       li[i].classList.add('show');
       match = clicked;
-      console.log('worked');
-      console.log(dis[i]);
-      console.log(clicked);
-      
-      
     } else {
      console.log('no');
     };
@@ -70,16 +66,20 @@ qwerty.addEventListener('click', (e) => {
   if(e.target.tagName === 'BUTTON' && e.target.className != 'chosen') {
    e.target.classList.add('chosen');
    let clicked = e.target;
-    if(1 == true) {
+  
+   checkLetter(clicked.textContent);
+   let matching = match;
+    if(e.target == match ) {
+      console.log(matching)
+    } else {
+      console.log('nope2');
 
-    
-      checkLetter(clicked.textContent);
-      console.log()
     };
   } else {
+    missed = +1;
+    document.querySelectorAll(".tries").src="images/lostHeart.png";
 
-    console.log('nope')
-
+    console.log('nope');
   };
  
 }); 
