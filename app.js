@@ -3,6 +3,8 @@ const phr =  document.querySelector('#phrase');
 const rest = document.querySelector('.btn__reset');
 const phrases = ['pit stop', 'enginebrake', 'starting gird', 'paddock', 'parabolica'];
 const ranNum = Math.floor(Math.random()*5);
+const overLay = document.querySelector('#overlay');
+const main_head = document.querySelector('#title');
 let missed = 0;
 let match = null; 
 let dis = '';
@@ -11,7 +13,7 @@ let li = '';
 
 
 rest.addEventListener('click', (e) => {
-  document.querySelector('#overlay').style.display = "none"
+  overLay.style.display = "none"
   
 });
 
@@ -56,19 +58,24 @@ function checkLetter(clicked) {
      console.log('no');
     };
   };
+  checkWin();
   return match;
+ 
 };
 
 function checkWin() {
   let letters = document.querySelectorAll('.letter');
   let shown = document.querySelectorAll('.show');
 
-  if( missed <= 4) {
+  if( missed < 4) {
       if(letters.length == shown.length) {
         console.log('win')
       };
     } else {
-      console.log('lose');
+      overLay.style.display = "flex"
+      overLay.classList.add('lose');
+      main_head.append('sorry you have lost');
+      console.log(main_head);
 
     };
 
@@ -93,6 +100,6 @@ qwerty.addEventListener('click', (e) => {
       return missed;
     };
   };
-  checkWin();
+
 }); 
 
