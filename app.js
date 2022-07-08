@@ -44,13 +44,11 @@ getRandomPhraseAsArray();
 addPhraseToDisplay(dis);
 
 
+
 function checkLetter(clicked) {
-  
   let letter = document.querySelectorAll('.letter');
   let li = document.querySelectorAll('li');
   for(let i = 0; i < letter.length; i++) {
- 
-    
     if(dis[i] == clicked) {
       li[i].classList.add('show');
       match = clicked;
@@ -61,27 +59,40 @@ function checkLetter(clicked) {
   return match;
 };
 
+function checkWin() {
+  let letters = document.querySelectorAll('.letter');
+  let shown = document.querySelectorAll('.show');
+
+  if( missed <= 4) {
+      if(letters.length == shown.length) {
+        console.log('win')
+      };
+    } else {
+      console.log('lose');
+
+    };
+
+};
+
+
 qwerty.addEventListener('click', (e) => {
-  
+ 
   if(e.target.tagName === 'BUTTON' && e.target.className != 'chosen') {
    e.target.classList.add('chosen');
    let clicked = e.target;
-  
+   
    checkLetter(clicked.textContent);
    let matching = match;
-    if(e.target == match ) {
+    if(e.target.textContent == match ) {
       console.log(matching)
     } else {
-      console.log('nope2');
-
+      missed = missed + 1;
+     let wrong = document.querySelectorAll(".tries");
+     wrong 
+      console.log(missed);
+      return missed;
     };
-  } else {
-    missed = +1;
-    document.querySelectorAll(".tries").src="images/lostHeart.png";
-
-    console.log('nope');
   };
- 
+  checkWin();
 }); 
-
 
