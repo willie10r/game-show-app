@@ -4,7 +4,7 @@ const rest = document.querySelector('.btn__reset');
 const phrases = ['pit stop', 'enginebrake', 'starting gird', 'paddock', 'parabolica'];
 const ranNum = Math.floor(Math.random()*5);
 const overLay = document.querySelector('#overlay');
-const main_head = document.querySelector('#title');
+const main_head = document.getElementsByClassName('#title');
 let missed = 0;
 let match = null; 
 let dis = '';
@@ -59,26 +59,9 @@ function checkLetter(clicked) {
     };
   };
   checkWin();
+  
   return match;
  
-};
-
-function checkWin() {
-  let letters = document.querySelectorAll('.letter');
-  let shown = document.querySelectorAll('.show');
-
-  if( missed < 4) {
-      if(letters.length == shown.length) {
-        console.log('win')
-      };
-    } else {
-      overLay.style.display = "flex"
-      overLay.classList.add('lose');
-      main_head.append('sorry you have lost');
-      console.log(main_head);
-
-    };
-
 };
 
 
@@ -91,15 +74,36 @@ qwerty.addEventListener('click', (e) => {
    checkLetter(clicked.textContent);
    let matching = match;
     if(e.target.textContent == match ) {
-      console.log(matching)
+      console.log(matching);
     } else {
       missed = missed + 1;
      let wrong = document.querySelectorAll(".tries");
-     wrong 
+     
       console.log(missed);
       return missed;
     };
   };
 
 }); 
+
+function checkWin() {
+  let letters = document.querySelectorAll('.letter');
+  let shown = document.querySelectorAll('.show');
+
+  if( missed < 4) {
+      if(letters.length == shown.length) {
+        overLay.classList.add('win');
+        main_head.innerHTML = ('wwwooooo you won!');
+        console.log('win');
+      };
+    } else {
+      main_head.innerHTML = 'sorry you have lost';
+    
+      overLay.style.display = "flex";
+      overLay.classList.add('lose');
+      console.log(main_head);
+      
+    };
+
+};
 
