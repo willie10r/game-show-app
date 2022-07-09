@@ -75,7 +75,6 @@ qwerty.addEventListener('click', (e) => {
       if(missed == 4) {
         score.innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px">';
       };
-      console.log(score);
       return missed;
     };
   };
