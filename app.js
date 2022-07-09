@@ -5,6 +5,7 @@ const phrases = ['pit stop', 'enginebrake', 'starting gird', 'paddock', 'parabol
 const ranNum = Math.floor(Math.random()*5);
 const overLay = document.querySelector('#overlay');
 const main_head = document.getElementsByClassName('#title');
+const score = document.querySelector('#scoreboard');
 let missed = 0;
 let match = null; 
 let dis = '';
@@ -24,18 +25,13 @@ function getRandomPhraseAsArray() {
 
 function addPhraseToDisplay(dis) {
  for(let i = 0; i < dis.length; i++)  {
-  if(dis[i] === ' ') {
-    ul = document.getElementById("phrase");
-    li = document.createElement('li');
-    li.innerHTML = dis[i];
-    ul.appendChild(li);
+  ul = document.getElementById("phrase");
+  li = document.createElement('li');
+  li.innerHTML = dis[i];
+  ul.appendChild(li);
+  if(dis[i] == ' ') {
     li.classList.add('space');
- 
   } else {
-    ul = document.getElementById("phrase");
-    li = document.createElement('li');
-    li.innerHTML = dis[i];
-    ul.appendChild(li);
     li.classList.add('letter');
   
   };
@@ -50,7 +46,7 @@ addPhraseToDisplay(dis);
 function checkLetter(clicked) {
   let letter = document.querySelectorAll('.letter');
   let li = document.querySelectorAll('li');
-  for(let i = 0; i < letter.length; i++) {
+  for(let i = 0; i < dis.length; i++) {
     if(dis[i] == clicked) {
       li[i].classList.add('show');
       match = clicked;
@@ -77,9 +73,19 @@ qwerty.addEventListener('click', (e) => {
       console.log(matching);
     } else {
       missed = missed + 1;
-     let wrong = document.querySelectorAll(".tries");
-     
-      console.log(missed);
+      if(missed == 1) {
+        score.innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px">';
+      };
+      if(missed == 2) {
+        score.innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px">';
+      };
+      if(missed == 3) {
+        score.innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px">';
+      };
+      if(missed == 4) {
+        score.innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px">';
+      };
+      console.log(score);
       return missed;
     };
   };
@@ -92,17 +98,15 @@ function checkWin() {
 
   if( missed < 4) {
       if(letters.length == shown.length) {
+        overLay.style.display = "flex";
         overLay.classList.add('win');
-        main_head.innerHTML = ('wwwooooo you won!');
+        overLay.innerHTML = ('wwwooooo you won!');
         console.log('win');
       };
     } else {
-      main_head.innerHTML = 'sorry you have lost';
-    
+      overLay.innerHTML = 'sorry you have lost';
       overLay.style.display = "flex";
       overLay.classList.add('lose');
-      console.log(main_head);
-      
     };
 
 };
