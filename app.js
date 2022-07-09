@@ -65,14 +65,11 @@ qwerty.addEventListener('click', (e) => {
       missed = missed + 1;
       if(missed == 1) {
         score.innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px">';
-      };
-      if(missed == 2) {
+      } else if(missed == 2) {
         score.innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px">';
-      };
-      if(missed == 3) {
+      } else if(missed == 3) {
         score.innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px">';
-      };
-      if(missed == 4) {
+      } else if(missed == 4) {
         score.innerHTML = '<img src="images/liveHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px"> <img src="images/lostHeart.png" height="35px" width="30px">';
       };
       return missed;
