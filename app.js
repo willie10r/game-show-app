@@ -12,10 +12,8 @@ let dis = '';
 let ul = '';
 let li = '';
 
-
 rest.addEventListener('click', (e) => {
-  overLay.style.display = "none"
-  
+  overLay.style.display = "none"  
 });
 
 function getRandomPhraseAsArray() {
@@ -33,15 +31,11 @@ function addPhraseToDisplay(dis) {
     li.classList.add('space');
   } else {
     li.classList.add('letter');
-  
   };
- 
  };
 };
 getRandomPhraseAsArray();
 addPhraseToDisplay(dis);
-
-
 
 function checkLetter(clicked) {
   let letter = document.querySelectorAll('.letter');
@@ -54,19 +48,15 @@ function checkLetter(clicked) {
      console.log('no');
     };
   };
-  checkWin();
-  
+  checkWin();  
   return match;
- 
 };
-
 
 qwerty.addEventListener('click', (e) => {
  
   if(e.target.tagName === 'BUTTON' && e.target.className != 'chosen') {
    e.target.classList.add('chosen');
-   let clicked = e.target;
-   
+   let clicked = e.target; 
    checkLetter(clicked.textContent);
    let matching = match;
     if(e.target.textContent == match ) {
@@ -89,13 +79,11 @@ qwerty.addEventListener('click', (e) => {
       return missed;
     };
   };
-
 }); 
 
 function checkWin() {
   let letters = document.querySelectorAll('.letter');
   let shown = document.querySelectorAll('.show');
-
   if( missed < 4) {
       if(letters.length == shown.length) {
         overLay.style.display = "flex";
@@ -103,11 +91,10 @@ function checkWin() {
         overLay.innerHTML = ('wwwooooo you won!');
         console.log('win');
       };
-    } else {
-      overLay.innerHTML = 'sorry you have lost';
-      overLay.style.display = "flex";
-      overLay.classList.add('lose');
-    };
-
+  } else {
+    overLay.innerHTML = 'sorry you have lost';
+    overLay.style.display = "flex";
+    overLay.classList.add('lose');
+  };
 };
 
